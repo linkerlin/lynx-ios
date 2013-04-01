@@ -26,7 +26,7 @@ public class AccountDaoTest extends BaseTest {
 
 	@Test
 	public void accountDaoTest4User() {
-		UserPo userDo = accountDao.getUser("name", "chrisliu");
+		UserPo userDo = accountDao.getUser("name", "chris");
 		if (userDo != null) {
 			System.out.println(userDo.getEmail());
 		}

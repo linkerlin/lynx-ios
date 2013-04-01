@@ -1,5 +1,6 @@
 package com.cop.mobile.test.car;
 
+import java.net.URLDecoder;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -77,9 +78,7 @@ public class MyCarServiceTest extends BaseTest {
 		date = sdf.parse("2013-03-06 08:30:11");
 		System.out.println("2013-03-06 08:30:11:\t" + date.getTime());
 		
-		Response resp = Response.status(Status.OK)
-				.header("Content-Type", "text/html;charset=UTF-8").entity("你好")
-				.build();
-		System.out.println(resp.getEntity());
+		String test = "%7B%22status%22%3A400%2C%22data%22%3A%7B%22title%22%3A%22login+error%22%2C%22content%22%3A%22%E7%94%A8%E6%88%B7%E4%B8%8D%E5%AD%98%E5%9C%A8%22%7D%7D";
+		System.out.println(URLDecoder.decode(test, "utf-8"));
 	}
 }

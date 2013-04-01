@@ -1,6 +1,5 @@
 package com.cop.mobi.rest.action;
 
-import java.net.URLDecoder;
 import java.net.URLEncoder;
 
 import javax.ws.rs.FormParam;
@@ -48,9 +47,9 @@ public class AccountAction extends AbstractAction {
 
 		try {
 			User user = new User();
-			user.setEmail(URLDecoder.decode(email, "UTF-8"));
-			user.setName(URLDecoder.decode(name, "UTF-8"));
-			user.setPwd(URLDecoder.decode(pwd, "UTF-8"));
+			user.setEmail(email);
+			user.setName(name);
+			user.setPwd(pwd);
 			Result result = accountService.login(user);
 			return Response.status(Status.OK)
 					.entity(URLEncoder.encode(result.toString(), "UTF-8"))
