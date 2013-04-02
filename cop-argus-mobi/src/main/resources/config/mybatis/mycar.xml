@@ -22,15 +22,23 @@
 		<result property="addTime" column="addTime" />
 	</resultMap>
 
+	<insert id="addMyCar" parameterType="com.cop.mobi.car.entity.MyCar">
+		INSERT INTO LC_MyCar (uid,
+		obd, nameCH, price, buyDate)
+		VALUES
+		(${uid}, #{obd},
+		${nameCH}, ${price},
+		${buyDate})
+	</insert>
 
 	<select id="getMyCar" resultMap="myCarResult">
 		SELECT
-		id, uid, obd, nameCH, price, buyDate
+		id, uid, obd, nameCH,
+		price, buyDate
 		FROM
 		LC_MyCar
 		WHERE ${key}=${val}
 	</select>
-
 
 	<select id="getMyCarStatus" resultMap="routeResult">
 		SELECT

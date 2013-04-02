@@ -55,6 +55,21 @@ public class MyCarServiceImpl extends AbstractService implements MyCarService {
 
 	@Override
 	public Result addMyCar(MyCar myCar) {
+		try {
+			MyCar confirm = myCarDao.getMyCar("obd", myCar.getObd());
+			if (confirm != null) {
+				return new Result(ResultStatus.RS_FAIL, new Message("waring",
+						"该OBD设备已存在"));
+			} else {
+				myCarDao.addMyCar(myCar);
+			}
+			
+			
+		} catch (Exception e) {
+			
+		}
+		
+		
 		return null;
 	}
 

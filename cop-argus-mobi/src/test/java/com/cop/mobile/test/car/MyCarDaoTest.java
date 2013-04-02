@@ -23,11 +23,30 @@ public class MyCarDaoTest extends BaseTest {
 	private MyCarDao myCarDao;
 
 	@Test
-	public void myCarTest() {
+	public void getMyCarTest() {
 		try {
-			MyCar myCar = myCarDao.getMyCar("uid", 1);
+			MyCar myCar = myCarDao.getMyCar("uid", 2);
 			if (myCar != null) {
 				System.out.println(myCar.toString());
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	@Test
+	public void addMyCarTest() {
+		MyCar registerCar = new MyCar();
+		registerCar.setUid(3);
+		registerCar.setNameCH("大众宝来1.6T");
+		registerCar.setObd("E20A39F4-73F5-4BC4-A12F-17D1AD07A961");
+		registerCar.setPrice(125000);
+		registerCar.setBuyDate(1362529391000l);
+		try {
+			Object result = myCarDao.addMyCar(registerCar);
+			MyCar finalMyCar = myCarDao.getMyCar("uid", 3);
+			if (finalMyCar != null) {
+				System.out.println(finalMyCar.toString());
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

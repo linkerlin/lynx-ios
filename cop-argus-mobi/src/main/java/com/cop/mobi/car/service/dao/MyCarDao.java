@@ -14,6 +14,8 @@ import com.cop.mobi.car.entity.MyCar;
  */
 public interface MyCarDao {
 	
+	Object addMyCar(MyCar myCar);
+	
 	MyCar getMyCar(@Param(value = "key") String key,
 			@Param(value = "val") Object val);
 

@@ -74,8 +74,8 @@ public class MyCar {
 
 	@Override
 	public String toString() {
-		return String.format(
-				"{id:%d,uid:%d,obd:\"%s\",nameCH:\"%s\",price:%f,buyDate:%d}",
-				id, uid, obd, nameCH, price, buyDate);
+		return String
+				.format("{\"id\":%d,\"uid\":%d,\"obd\":\"%s\",\"nameCH\":\"%s\",\"price\":%f,\"buyDate\":%d}",
+						id, uid, obd, nameCH, price, buyDate);
 	}
 }

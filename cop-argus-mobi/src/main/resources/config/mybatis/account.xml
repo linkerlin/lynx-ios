@@ -32,7 +32,7 @@
 	<insert id="addUser" parameterType="com.cop.mobi.account.entity.User">
 		INSERT INTO
 		LC_User
-		(email, name, pwd, sex)
+		(name, email, pwd, sex)
 		VALUES
 		(#{name}, #{email}, #{pwd}, #{sex})
 	</insert>

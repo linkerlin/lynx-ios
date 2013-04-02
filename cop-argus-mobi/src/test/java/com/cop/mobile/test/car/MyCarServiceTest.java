@@ -31,10 +31,9 @@ public class MyCarServiceTest extends BaseTest {
 			Result result = myCarService.getMyCarStatus(1, beginDate.getTime(),
 					endDate.getTime());
 			if (result != null) {
-				System.out.println(result.toString());
-
 				JSONObject jo = new JSONObject(result.toString());
 				System.out.println(jo.toString());
+				System.out.println(jo.toString().getBytes().length);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
