@@ -26,8 +26,8 @@
 		INSERT INTO LC_MyCar (uid,
 		obd, nameCH, price, buyDate)
 		VALUES
-		(${uid}, #{obd},
-		${nameCH}, ${price},
+		(${uid}, '${obd}',
+		'${nameCH}', ${price},
 		${buyDate})
 	</insert>
 

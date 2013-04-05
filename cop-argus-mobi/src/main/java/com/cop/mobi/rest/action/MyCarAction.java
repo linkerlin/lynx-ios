@@ -39,7 +39,7 @@ public class MyCarAction extends AbstractAction {
 	public Response carInfo(@FormParam("mcid") int mcid) {
 		if (myCarService == null) {
 			Result result = new Result(ResultStatus.RS_ERROR, new Message(
-					"error", "server inner error"));
+					"系统错误", "服务器内部错误"));
 			return Response.status(Status.OK).entity(result.toString()).build();
 		}
 		try {
@@ -47,7 +47,7 @@ public class MyCarAction extends AbstractAction {
 			return Response.status(Status.OK).entity(result.toString()).build();
 		} catch (Exception e) {
 			Result result = new Result(ResultStatus.RS_ERROR, new Message(
-					"error", "server inner error"));
+					"系统错误", "服务器内部错误"));
 			return Response.status(Status.OK).entity(result.toString()).build();
 		}
 	}
@@ -60,17 +60,17 @@ public class MyCarAction extends AbstractAction {
 		if (myCarService == null) {
 			return Response
 					.status(Status.OK)
-					.entity(new Message("get car info error",
-							"server inner error")).build();
+					.entity(new Message("系统错误",
+							"服务器内部错误")).build();
 		}
 
 		try {
-			Result result = myCarService.getMyCarStatus(mcid, beginTime,
+			Result result = myCarService.getMyCarDriveRoutes(mcid, beginTime,
 					endTime);
 			return Response.status(Status.OK).entity(result.toString()).build();
 		} catch (Exception e) {
 			Result result = new Result(ResultStatus.RS_ERROR, new Message(
-					"error", "server inner error"));
+					"系统错误", "服务器内部错误"));
 			return Response.status(Status.OK).entity(result).build();
 		}
 	}

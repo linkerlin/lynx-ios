@@ -3,6 +3,7 @@ package com.cop.mobi.car.service.impl;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.log4j.Logger;
 import org.springframework.stereotype.Service;
 
 import com.cop.mobi.car.entity.DriveRoute;
@@ -26,6 +27,8 @@ public class MyCarServiceImpl extends AbstractService implements MyCarService {
 
 	private static final String Tag = "MyCarServiceImpl";
 
+	private static final Logger MyCarLog = Logger.getLogger("mycar-log");
+
 	private static MyCarDao myCarDao;
 
 	static {
@@ -43,13 +46,13 @@ public class MyCarServiceImpl extends AbstractService implements MyCarService {
 			if (myCar != null) {
 				return new Result(ResultStatus.RS_OK, myCar);
 			} else {
-				return new Result(ResultStatus.RS_FAIL, new Message("waring",
-						"cant find the car"));
+				return new Result(ResultStatus.RS_FAIL, new Message("警告",
+						"未发现该车辆"));
 			}
 		} catch (Exception e) {
 			error(Tag, String.format("getMyCarByUid(%d)", uid), e);
-			return new Result(ResultStatus.RS_ERROR, new Message("error",
-					"server inner error"));
+			return new Result(ResultStatus.RS_ERROR, new Message("系统错误",
+					"服务器内部错误"));
 		}
 	}
 
@@ -58,23 +61,21 @@ public class MyCarServiceImpl extends AbstractService implements MyCarService {
 		try {
 			MyCar confirm = myCarDao.getMyCar("obd", myCar.getObd());
 			if (confirm != null) {
-				return new Result(ResultStatus.RS_FAIL, new Message("waring",
+				return new Result(ResultStatus.RS_FAIL, new Message("注册错误",
 						"该OBD设备已存在"));
 			} else {
 				myCarDao.addMyCar(myCar);
 			}
-			
-			
+
 		} catch (Exception e) {
-			
+
 		}
-		
-		
+
 		return null;
 	}
 
 	@Override
-	public Result getMyCarStatus(int mcid, long beginTime, long endTime) {
+	public Result getMyCarDriveRoutes(int mcid, long beginTime, long endTime) {
 		try {
 			List<DriveRoutePo> drps = myCarDao.getMyCarStatus(mcid, beginTime,
 					endTime);
@@ -87,15 +88,22 @@ public class MyCarServiceImpl extends AbstractService implements MyCarService {
 				Result result = new Result(ResultStatus.RS_OK, drs);
 				return result;
 			} else {
-				return new Result(ResultStatus.RS_FAIL, new Message("waring",
-						"cant find the car's status"));
+				return new Result(ResultStatus.RS_FAIL, new Message("警告",
+						"未发现该车辆行车信息"));
 			}
 		} catch (Exception e) {
 			error(Tag, String.format("getMyCarStatus(%d, %d, %d)", mcid,
 					beginTime, endTime), e);
-			return new Result(ResultStatus.RS_ERROR, new Message("error",
-					"server inner error"));
+			return new Result(ResultStatus.RS_ERROR, new Message("系统错误",
+					"服务器内部错误"));
 		}
+	}
+
+	@Override
+	public Result pushDriveRouteData(int mcid, String data, long startTime,
+			long endTime) {
+		MyCarLog.info(String.format("%d-%s", mcid, data));
+		return null;
 	}
 
 }

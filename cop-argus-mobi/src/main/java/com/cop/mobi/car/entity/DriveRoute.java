@@ -88,7 +88,7 @@ public class DriveRoute {
 	@Override
 	public String toString() {
 		return String.format(
-				"{\"mcid\":%d,\"status\":%s,\"startTime\":%d,\"endTime\":%d}",
+				"{\"mcid\":%d,\"status\":%s,\"beginTime\":%d,\"endTime\":%d}",
 				mcid, status2JSONArray(), startTime, endTime);
 	}
 }

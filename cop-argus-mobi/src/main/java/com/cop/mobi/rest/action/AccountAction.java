@@ -19,6 +19,11 @@ import com.cop.mobi.common.Result.ResultStatus;
 import com.cop.mobi.rest.core.AbstractAction;
 import com.cop.mobi.rest.core.SpringApplicationContext;
 
+/**
+ * 
+ * @author chris.liu
+ *
+ */
 @Path("/account")
 @Produces("application/json;charset=UTF-8")
 public class AccountAction extends AbstractAction {

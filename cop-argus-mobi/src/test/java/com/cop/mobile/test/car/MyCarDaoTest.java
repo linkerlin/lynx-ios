@@ -33,7 +33,7 @@ public class MyCarDaoTest extends BaseTest {
 			e.printStackTrace();
 		}
 	}
-	
+
 	@Test
 	public void addMyCarTest() {
 		MyCar registerCar = new MyCar();
@@ -41,7 +41,7 @@ public class MyCarDaoTest extends BaseTest {
 		registerCar.setNameCH("大众宝来1.6T");
 		registerCar.setObd("E20A39F4-73F5-4BC4-A12F-17D1AD07A961");
 		registerCar.setPrice(125000);
-		registerCar.setBuyDate(1362529391000l);
+		registerCar.setBuyDate(1360857600000l);
 		try {
 			Object result = myCarDao.addMyCar(registerCar);
 			MyCar finalMyCar = myCarDao.getMyCar("uid", 3);
@@ -52,15 +52,15 @@ public class MyCarDaoTest extends BaseTest {
 			e.printStackTrace();
 		}
 	}
-	
+
 	@Test
 	public void statusTest() {
 		try {
 			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 			Date beginTime = sdf.parse("2013-03-02 00:00:00");
 			Date endTime = sdf.parse("2013-03-03 00:00:00");
-			List<DriveRoutePo> status = myCarDao.getMyCarStatus(1, beginTime.getTime(),
-					endTime.getTime());
+			List<DriveRoutePo> status = myCarDao.getMyCarStatus(1,
+					beginTime.getTime(), endTime.getTime());
 			if (status != null) {
 				for (DriveRoutePo s : status) {
 					System.out.println(sdf.format(new Date(s.getAddTime())));
