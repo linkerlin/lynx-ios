@@ -1,8 +1,8 @@
 package com.cop.mobi.account.service;
 
 import com.cop.mobi.account.entity.User;
-import com.cop.mobi.car.entity.MyCar;
 import com.cop.mobi.common.Result;
+import com.cop.mobi.mycar.entity.MyCar;
 
 /**
  * 

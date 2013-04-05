@@ -1,4 +1,4 @@
-package com.cop.mobi.car.entity;
+package com.cop.mobi.mycar.entity;
 
 /**
  * 

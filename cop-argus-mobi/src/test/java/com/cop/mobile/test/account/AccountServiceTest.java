@@ -6,8 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.cop.mobi.account.entity.User;
 import com.cop.mobi.account.service.AccountService;
-import com.cop.mobi.car.entity.MyCar;
 import com.cop.mobi.common.Result;
+import com.cop.mobi.mycar.entity.MyCar;
 import com.cop.mobile.test.BaseTest;
 
 /**

@@ -8,8 +8,8 @@ import org.json.JSONObject;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.cop.mobi.car.service.MyCarService;
 import com.cop.mobi.common.Result;
+import com.cop.mobi.mycar.service.MyCarService;
 import com.cop.mobile.test.BaseTest;
 
 /**

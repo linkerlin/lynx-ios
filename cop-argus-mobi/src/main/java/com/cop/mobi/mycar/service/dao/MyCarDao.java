@@ -1,11 +1,11 @@
-package com.cop.mobi.car.service.dao;
+package com.cop.mobi.mycar.service.dao;
 
 import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
 
-import com.cop.mobi.car.entity.DriveRoutePo;
-import com.cop.mobi.car.entity.MyCar;
+import com.cop.mobi.mycar.entity.DriveRoutePo;
+import com.cop.mobi.mycar.entity.MyCar;
 
 /**
  * 

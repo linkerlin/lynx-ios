@@ -7,9 +7,9 @@ import java.util.List;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.cop.mobi.car.entity.DriveRoutePo;
-import com.cop.mobi.car.entity.MyCar;
-import com.cop.mobi.car.service.dao.MyCarDao;
+import com.cop.mobi.mycar.entity.DriveRoutePo;
+import com.cop.mobi.mycar.entity.MyCar;
+import com.cop.mobi.mycar.service.dao.MyCarDao;
 import com.cop.mobile.test.BaseTest;
 
 /**

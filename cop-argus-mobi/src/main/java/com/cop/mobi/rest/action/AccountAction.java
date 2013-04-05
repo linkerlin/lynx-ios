@@ -12,10 +12,10 @@ import javax.ws.rs.core.Response.Status;
 
 import com.cop.mobi.account.entity.User;
 import com.cop.mobi.account.service.AccountService;
-import com.cop.mobi.car.entity.MyCar;
 import com.cop.mobi.common.Message;
 import com.cop.mobi.common.Result;
 import com.cop.mobi.common.Result.ResultStatus;
+import com.cop.mobi.mycar.entity.MyCar;
 import com.cop.mobi.rest.core.AbstractAction;
 import com.cop.mobi.rest.core.SpringApplicationContext;
 

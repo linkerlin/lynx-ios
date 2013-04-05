@@ -1,4 +1,4 @@
-package com.cop.mobi.car.service.impl;
+package com.cop.mobi.mycar.service.impl;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,15 +6,16 @@ import java.util.List;
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Service;
 
-import com.cop.mobi.car.entity.DriveRoute;
-import com.cop.mobi.car.entity.DriveRoutePo;
-import com.cop.mobi.car.entity.MyCar;
-import com.cop.mobi.car.service.MyCarService;
-import com.cop.mobi.car.service.dao.MyCarDao;
 import com.cop.mobi.common.AbstractService;
 import com.cop.mobi.common.Message;
 import com.cop.mobi.common.Result;
 import com.cop.mobi.common.Result.ResultStatus;
+import com.cop.mobi.mycar.entity.DriveRoute;
+import com.cop.mobi.mycar.entity.DriveRoutePo;
+import com.cop.mobi.mycar.entity.MyCar;
+import com.cop.mobi.mycar.entity.OilBill;
+import com.cop.mobi.mycar.service.MyCarService;
+import com.cop.mobi.mycar.service.dao.MyCarDao;
 import com.cop.mobi.rest.core.SpringApplicationContext;
 
 /**
@@ -103,6 +104,21 @@ public class MyCarServiceImpl extends AbstractService implements MyCarService {
 	public Result pushDriveRouteData(int mcid, String data, long startTime,
 			long endTime) {
 		MyCarLog.info(String.format("%d-%s", mcid, data));
+		return null;
+	}
+
+	@Override
+	public Result addBill(OilBill bill) {
+		return null;
+	}
+
+	@Override
+	public Result getBills(int uid, long beginTime, long endTime) {
+		return null;
+	}
+
+	@Override
+	public Result deleteBill(int bid) {
 		return null;
 	}
 
