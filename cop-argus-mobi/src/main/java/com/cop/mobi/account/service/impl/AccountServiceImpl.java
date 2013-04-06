@@ -69,7 +69,7 @@ public class AccountServiceImpl extends AbstractService implements
 						data = new User(userPo);
 						myCar.setUid(userPo.getId());
 						myCarService.addMyCar(myCar);
-						if (myCarService.getMyCar(userPo.getId()) != null) {
+						if (myCarService.getMyCarByOBD(userPo.getObd()) != null) {
 							return new Result(ResultStatus.RS_OK, data);
 						}
 					}

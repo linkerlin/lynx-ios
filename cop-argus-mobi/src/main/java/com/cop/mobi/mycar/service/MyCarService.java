@@ -10,20 +10,48 @@ import com.cop.mobi.mycar.entity.OilBill;
  * 
  */
 public interface MyCarService {
+	
+	/**
+	 * 根据车辆id获取车辆信息
+	 * 
+	 * @param obd
+	 * @return
+	 */
+	Result getMyCarById(int id);
 
-	Result getMyCar(int uid);
+	/**
+	 * 根据OBD设备id获取车辆信息
+	 * 
+	 * @param obd
+	 * @return
+	 */
+	Result getMyCarByOBD(String obd);
 
+	/**
+	 * 获取用户所有车辆
+	 * 
+	 * @param uid
+	 * @return
+	 */
+	Result getMyCars(int uid);
+
+	/**
+	 * 注册车辆信息
+	 * 
+	 * @param myCar
+	 * @return
+	 */
 	Result addMyCar(MyCar myCar);
 
 	/**
-	 * 获取车辆行车
+	 * 获取车辆行车状况
 	 * 
 	 * @param mcid
 	 * @param beginTime
 	 * @param endTime
 	 * @return
 	 */
-	Result getMyCarDriveRoutes(int mcid, long beginTime, long endTime);
+	Result getDriveRoutes(int mcid, long beginTime, long endTime);
 
 	/**
 	 * 存储客户端行车信息到server并记录数据log
@@ -34,8 +62,7 @@ public interface MyCarService {
 	 * @param endTime
 	 * @return
 	 */
-	Result pushDriveRouteData(int mcid, String data, long startTime,
-			long endTime);
+	Result uploadDriveRoutes(int mcid, String data, long startTime, long endTime);
 
 	/**
 	 * 新增加油账单

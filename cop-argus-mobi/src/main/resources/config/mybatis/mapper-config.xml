@@ -3,7 +3,9 @@
 	"http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
 	<mappers>
-		<mapper resource="config/mybatis/account.xml"/>
-		<mapper resource="config/mybatis/mycar.xml"/>
+		<mapper resource="config/mybatis/account.xml" />
+		<mapper resource="config/mybatis/mycar.xml" />
+		<mapper resource="config/mybatis/oilbill.xml" />
+		<mapper resource="config/mybatis/diagnose.xml" />
 	</mappers>
 </configuration>

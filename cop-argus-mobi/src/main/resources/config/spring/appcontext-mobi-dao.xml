@@ -12,7 +12,19 @@
 	
 	<bean id="myCarDao" class="org.mybatis.spring.mapper.MapperFactoryBean">
 		<property name="mapperInterface"
-			value="com.cop.mobi.car.service.dao.MyCarDao" />
+			value="com.cop.mobi.mycar.service.dao.MyCarDao" />
+		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
+	</bean>
+	
+	<bean id="diagnoseDao" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface"
+			value="com.cop.mobi.mycar.service.dao.DiagnoseDao" />
+		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
+	</bean>
+	
+	<bean id="oilBillDao" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface"
+			value="com.cop.mobi.mycar.service.dao.OilBillDao" />
 		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
 	</bean>
 

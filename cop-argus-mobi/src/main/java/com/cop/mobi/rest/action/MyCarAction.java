@@ -43,7 +43,7 @@ public class MyCarAction extends AbstractAction {
 			return Response.status(Status.OK).entity(result.toString()).build();
 		}
 		try {
-			Result result = myCarService.getMyCar(mcid);
+			Result result = myCarService.getMyCarById(mcid);
 			return Response.status(Status.OK).entity(result.toString()).build();
 		} catch (Exception e) {
 			Result result = new Result(ResultStatus.RS_ERROR, new Message(
@@ -65,7 +65,7 @@ public class MyCarAction extends AbstractAction {
 		}
 
 		try {
-			Result result = myCarService.getMyCarDriveRoutes(mcid, beginTime,
+			Result result = myCarService.getDriveRoutes(mcid, beginTime,
 					endTime);
 			return Response.status(Status.OK).entity(result.toString()).build();
 		} catch (Exception e) {

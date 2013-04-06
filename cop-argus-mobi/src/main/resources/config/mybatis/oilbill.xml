@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cop.mobi.mycar.service.dao.OilBillDao">
+	<resultMap id="oilBillResult" type="com.cop.mobi.mycar.entity.OilBill">
+		<result property="id" column="id" />
+		<result property="uid" column="uid" />
+		<result property="oil" column="oil" />
+		<result property="cost" column="cost" />
+		<result property="addtime" column="addtime" />
+	</resultMap>
+
+	<select id="getOilBills" resultMap="oilBillResult">
+		SELECT
+		id, uid, oil, cost, addtime
+		FROM
+		LC_OilBill
+		WHERE uid=${uid} AND 
+		<![CDATA[
+		addtime>=${beginTime} AND addtime<=${endTime}
+		]]>
+	</select>
+	
+</mapper>

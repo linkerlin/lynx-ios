@@ -8,6 +8,6 @@
 
 	<bean id="accountService" class="com.cop.mobi.account.service.impl.AccountServiceImpl" />
 	
-	<bean id="myCarService" class="com.cop.mobi.car.service.impl.MyCarServiceImpl" />
+	<bean id="myCarService" class="com.cop.mobi.mycar.service.impl.MyCarServiceImpl" />
 
 </beans>

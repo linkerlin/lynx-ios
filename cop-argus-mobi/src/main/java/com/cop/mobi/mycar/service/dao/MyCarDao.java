@@ -13,11 +13,14 @@ import com.cop.mobi.mycar.entity.MyCar;
  * 
  */
 public interface MyCarDao {
-	
-	Object addMyCar(MyCar myCar);
-	
-	MyCar getMyCar(@Param(value = "key") String key,
-			@Param(value = "val") Object val);
+
+	MyCar getMyCarById(@Param(value = "id") int id);
+
+	MyCar getMyCarByOBD(@Param(value = "obd") String obd);
+
+	List<MyCar> getMyCarByUid(@Param(value = "uid") int uid);
+
+	int addMyCar(MyCar myCar);
 
 	/**
 	 * get my car status by my car id during beginDate and end date

@@ -3,6 +3,7 @@ package com.cop.mobi.mycar.service.impl;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Service;
 
@@ -41,11 +42,46 @@ public class MyCarServiceImpl extends AbstractService implements MyCarService {
 	}
 
 	@Override
-	public Result getMyCar(int uid) {
+	public Result getMyCarById(int id) {
 		try {
-			MyCar myCar = myCarDao.getMyCar("uid", uid);
+			MyCar myCar = myCarDao.getMyCarById(id);
 			if (myCar != null) {
 				return new Result(ResultStatus.RS_OK, myCar);
+			} else {
+				return new Result(ResultStatus.RS_FAIL, new Message("警告",
+						"未发现该车辆"));
+			}
+		} catch (Exception e) {
+			error(Tag, String.format("getMyCarByID(%d)", id), e);
+			return new Result(ResultStatus.RS_ERROR, new Message("系统错误",
+					"服务器内部错误"));
+		}
+	}
+
+	@Override
+	public Result getMyCarByOBD(String obd) {
+		try {
+			MyCar myCar = myCarDao.getMyCarByOBD(obd);
+			if (myCar != null) {
+				return new Result(ResultStatus.RS_OK, myCar);
+			} else {
+				return new Result(ResultStatus.RS_FAIL, new Message("警告",
+						"未发现该车辆"));
+			}
+		} catch (Exception e) {
+			error(Tag, String.format("getMyCar(%d)", obd), e);
+			return new Result(ResultStatus.RS_ERROR, new Message("系统错误",
+					"服务器内部错误"));
+		}
+	}
+
+	@Override
+	public Result getMyCars(int uid) {
+		try {
+			List<MyCar> myCars = myCarDao.getMyCarByUid(uid);
+			if (myCars != null && myCars.size() > 0) {
+				String str = StringUtils.join(myCars, ",");
+				return new Result(ResultStatus.RS_OK, str);
 			} else {
 				return new Result(ResultStatus.RS_FAIL, new Message("警告",
 						"未发现该车辆"));
@@ -60,7 +96,7 @@ public class MyCarServiceImpl extends AbstractService implements MyCarService {
 	@Override
 	public Result addMyCar(MyCar myCar) {
 		try {
-			MyCar confirm = myCarDao.getMyCar("obd", myCar.getObd());
+			MyCar confirm = myCarDao.getMyCarByOBD(myCar.getObd());
 			if (confirm != null) {
 				return new Result(ResultStatus.RS_FAIL, new Message("注册错误",
 						"该OBD设备已存在"));
@@ -76,7 +112,7 @@ public class MyCarServiceImpl extends AbstractService implements MyCarService {
 	}
 
 	@Override
-	public Result getMyCarDriveRoutes(int mcid, long beginTime, long endTime) {
+	public Result getDriveRoutes(int mcid, long beginTime, long endTime) {
 		try {
 			List<DriveRoutePo> drps = myCarDao.getMyCarStatus(mcid, beginTime,
 					endTime);
@@ -101,7 +137,7 @@ public class MyCarServiceImpl extends AbstractService implements MyCarService {
 	}
 
 	@Override
-	public Result pushDriveRouteData(int mcid, String data, long startTime,
+	public Result uploadDriveRoutes(int mcid, String data, long startTime,
 			long endTime) {
 		MyCarLog.info(String.format("%d-%s", mcid, data));
 		return null;

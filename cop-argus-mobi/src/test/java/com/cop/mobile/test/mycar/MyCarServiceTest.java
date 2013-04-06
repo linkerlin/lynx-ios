@@ -1,4 +1,4 @@
-package com.cop.mobile.test.car;
+package com.cop.mobile.test.mycar;
 
 import java.net.URLDecoder;
 import java.text.SimpleDateFormat;
@@ -28,7 +28,7 @@ public class MyCarServiceTest extends BaseTest {
 			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 			Date beginDate = sdf.parse("2013-03-02 00:00:00");
 			Date endDate = sdf.parse("2013-03-06 00:00:00");
-			Result result = myCarService.getMyCarDriveRoutes(1, beginDate.getTime(),
+			Result result = myCarService.getDriveRoutes(1, beginDate.getTime(),
 					endDate.getTime());
 			if (result != null) {
 				JSONObject jo = new JSONObject(result.toString());
@@ -74,7 +74,7 @@ public class MyCarServiceTest extends BaseTest {
 		date = sdf.parse("2013-03-06 08:30:11");
 		System.out.println("2013-03-06 08:30:11:\t" + date.getTime());
 		
-		date = sdf.parse("2013-02-15 00:00:00");
+		date = sdf.parse("2013-05-15 00:00:00");
 		System.out.println("2013-02-15 00:00:00:\t" + date.getTime());
 		
 		String test = "%7B%22status%22%3A400%2C%22data%22%3A%7B%22title%22%3A%22login+error%22%2C%22content%22%3A%22%E7%94%A8%E6%88%B7%E4%B8%8D%E5%AD%98%E5%9C%A8%22%7D%7D";
