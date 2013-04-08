@@ -2,7 +2,7 @@ package com.cop.mobi.mycar.service;
 
 import java.util.List;
 
-import com.cop.mobi.common.KeyValuePair;
+import com.cop.mobi.common.Result;
 
 /**
  * 
@@ -16,5 +16,5 @@ public interface DiagnoseService {
 	 * @param codes
 	 * @return
 	 */
-	List<KeyValuePair> getDiagnoseItems(List<String> codes);
+	Result getDiagnoseItems(List<String> codes);
 }

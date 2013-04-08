@@ -2,6 +2,7 @@ package com.cop.mobi.account.service.impl;
 
 import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
+import org.springframework.stereotype.Service;
 
 import com.cop.mobi.account.entity.User;
 import com.cop.mobi.account.entity.UserPo;
@@ -20,6 +21,7 @@ import com.cop.mobi.rest.core.SpringApplicationContext;
  * @author chris.liu
  * 
  */
+@Service("accountService")
 public class AccountServiceImpl extends AbstractService implements
 		AccountService {
 

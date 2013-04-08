@@ -2,13 +2,16 @@ package com.cop.mobile.test.mycar;
 
 import java.net.URLDecoder;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import org.json.JSONObject;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.cop.mobi.common.Result;
+import com.cop.mobi.mycar.service.DiagnoseService;
 import com.cop.mobi.mycar.service.MyCarService;
 import com.cop.mobile.test.BaseTest;
 
@@ -21,6 +24,9 @@ public class MyCarServiceTest extends BaseTest {
 
 	@Autowired
 	private MyCarService myCarService;
+	
+	@Autowired
+	private DiagnoseService diagnoseService;
 
 	@Test
 	public void myCarServiceTest4Route() {
@@ -40,6 +46,23 @@ public class MyCarServiceTest extends BaseTest {
 		}
 	}
 
+	@Test
+	public void diagnoseServiceTest4getItems() {
+		List<String> codes = new ArrayList<String>();
+		codes.add("P1442");
+		codes.add("P1640");
+		codes.add("P1698");
+		codes.add("U1451");
+		
+		Result result = diagnoseService.getDiagnoseItems(codes);
+		try {
+			JSONObject jo = new JSONObject(result.toString());
+			System.out.println(jo.toString());
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
 	public static void main(String[] args) throws Exception {
 		Date date = new Date();
 		System.out.println(date.getTime());

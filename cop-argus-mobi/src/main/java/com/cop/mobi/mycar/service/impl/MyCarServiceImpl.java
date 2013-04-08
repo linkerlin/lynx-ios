@@ -24,7 +24,7 @@ import com.cop.mobi.rest.core.SpringApplicationContext;
  * @author chris.liu
  * 
  */
-@Service
+@Service("myCarService")
 public class MyCarServiceImpl extends AbstractService implements MyCarService {
 
 	private static final String Tag = "MyCarServiceImpl";

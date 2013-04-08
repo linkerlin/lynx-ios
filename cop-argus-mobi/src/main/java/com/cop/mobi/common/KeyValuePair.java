@@ -33,4 +33,9 @@ public class KeyValuePair {
 	public void setValue(String value) {
 		this.value = value;
 	}
+
+	@Override
+	public String toString() {
+		return String.format("{\"key\":\"%s\",\"value\":\"%s\"}", key, value);
+	}
 }

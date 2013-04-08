@@ -1,7 +1,6 @@
 package com.cop.mobi.mycar.service;
 
-import java.util.List;
-
+import com.cop.mobi.common.Result;
 import com.cop.mobi.mycar.entity.OilBill;
 
 /**
@@ -12,6 +11,14 @@ import com.cop.mobi.mycar.entity.OilBill;
 public interface OilBillService {
 
 	/**
+	 * 新增账单
+	 * 
+	 * @param bill
+	 * @return
+	 */
+	Result addBill(OilBill bill);
+
+	/**
 	 * 获取用户某段时间之间的油单
 	 * 
 	 * @param uid
@@ -19,5 +26,13 @@ public interface OilBillService {
 	 * @param endTime
 	 * @return
 	 */
-	List<OilBill> getBills(int uid, long beginTime, long endTime);
+	Result getBills(int uid, long beginTime, long endTime);
+
+	/**
+	 * 删除某一份账单
+	 * 
+	 * @param bill
+	 * @return
+	 */
+	Result deleteBill(OilBill bill);
 }
