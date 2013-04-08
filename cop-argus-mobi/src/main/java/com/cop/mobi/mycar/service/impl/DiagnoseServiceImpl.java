@@ -47,8 +47,22 @@ public class DiagnoseServiceImpl extends AbstractService implements
 		}
 	}
 
-	public Map<String, String> getAllDiagnoseItems() {
-		return OBD_CODES;
+	@Override
+	public Result getAllDiagnoseItems() {
+		List<KeyValuePair> items = new ArrayList<KeyValuePair>();
+		for (String key : OBD_CODES.keySet()) {
+			String val = OBD_CODES.get(key);
+			KeyValuePair item = new KeyValuePair(key, val);
+			items.add(item);
+		}
+
+		if (items.size() == 0) {
+			return new Result(ResultStatus.RS_FAIL, new Message("警告",
+					"未发现相应诊断码"));
+		}
+		
+		String tmp = String.format("[%s]", StringUtils.join(items, ","));
+		return new Result(ResultStatus.RS_OK, tmp);
 	}
 
 	public List<KeyValuePair> getBaseDiagnoseItems() {
