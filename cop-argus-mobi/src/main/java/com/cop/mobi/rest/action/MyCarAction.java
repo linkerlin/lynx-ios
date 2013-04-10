@@ -10,7 +10,6 @@ import com.cop.mobi.common.Message;
 import com.cop.mobi.common.Result;
 import com.cop.mobi.common.Result.ResultStatus;
 import com.cop.mobi.mycar.service.MyCarService;
-import com.cop.mobi.mycar.service.OilBillService;
 import com.cop.mobi.rest.core.AbstractAction;
 import com.cop.mobi.rest.core.SpringApplicationContext;
 
@@ -26,15 +25,10 @@ public class MyCarAction extends AbstractAction {
 
 	private static MyCarService myCarService;
 
-	private static OilBillService oilBillService;
-
 	static {
 		try {
 			myCarService = (MyCarService) SpringApplicationContext
 					.getBean("myCarService");
-
-			oilBillService = (OilBillService) SpringApplicationContext
-					.getBean("oilBillService");
 		} catch (Exception e) {
 			error(Tag, "init error", e);
 		}
@@ -78,25 +72,11 @@ public class MyCarAction extends AbstractAction {
 			return Response.status(Status.OK).entity(result).build();
 		}
 	}
-
+	
 	@POST
-	@Path("/getBills")
-	public Response bills(@FormParam("uid") int uid,
-			@FormParam("beginTime") long beginTime,
-			@FormParam("endTime") long endTime) {
-		if (oilBillService == null) {
-			return Response.status(Status.OK)
-					.entity(new Message("系统错误", "服务器内部错误")).build();
-		}
+	@Path("/diagnose")
+	public Response diagnose(@FormParam("codes") String codes) {
 		
-		try {
-			Result result = oilBillService.getBills(uid, beginTime,
-					endTime);
-			return Response.status(Status.OK).entity(result.toString()).build();
-		} catch (Exception e) {
-			Result result = new Result(ResultStatus.RS_ERROR, new Message(
-					"系统错误", "服务器内部错误"));
-			return Response.status(Status.OK).entity(result).build();
-		}
+		return null;
 	}
 }

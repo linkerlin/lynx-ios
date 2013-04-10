@@ -38,7 +38,19 @@ public class OilBillServiceImpl extends AbstractService implements
 
 	@Override
 	public Result addBill(OilBill bill) {
-		return null;
+		try {
+			oilBillDao.addOilBill(bill);
+			OilBill addBill = oilBillDao.getOilBill(bill.getAddtime());
+			if (addBill != null) {
+				return new Result(ResultStatus.RS_OK, addBill);
+			} else {
+				return new Result(ResultStatus.RS_FAIL, new Message("错误",
+						"添加账单失败"));
+			}
+		} catch (Exception e) {
+			error(Tag, "addBill()", e);
+			return new Result(ResultStatus.RS_FAIL, new Message("错误", "添加账单失败"));
+		}
 	}
 
 	@Override
@@ -60,7 +72,7 @@ public class OilBillServiceImpl extends AbstractService implements
 	}
 
 	@Override
-	public Result deleteBill(OilBill bill) {
+	public Result deleteBill(int bid) {
 		return null;
 	}
 }

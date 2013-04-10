@@ -13,7 +13,12 @@ import com.cop.mobi.mycar.entity.OilBill;
  */
 public interface OilBillDao {
 
+	Object addOilBill(OilBill bill);
+
+	OilBill getOilBill(@Param(value = "addtime") long addtime);
+
 	List<OilBill> getOilBills(@Param(value = "uid") int uid,
 			@Param(value = "beginTime") long beginTime,
 			@Param(value = "endTime") long endTime);
+
 }

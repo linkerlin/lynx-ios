@@ -9,6 +9,19 @@
 		<result property="cost" column="cost" />
 		<result property="addtime" column="addtime" />
 	</resultMap>
+	
+	<insert id="addOilBill">
+		INSERT INTO LC_OilBill (uid, oil, cost, addtime)
+		VALUES(${uid}, ${oil}, ${cost}, ${addtime})
+	</insert>
+	
+	<select id="getOilBill" resultMap="oilBillResult">
+		SELECT
+		id, uid, oil, cost, addtime
+		FROM
+		LC_OilBill
+		WHRER addtime=${addtime}
+	</select>
 
 	<select id="getOilBills" resultMap="oilBillResult">
 		SELECT
@@ -20,5 +33,7 @@
 		addtime>=${beginTime} AND addtime<=${endTime}
 		]]>
 	</select>
+	
+	
 	
 </mapper>

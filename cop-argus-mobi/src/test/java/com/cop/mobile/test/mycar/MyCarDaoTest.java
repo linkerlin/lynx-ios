@@ -11,7 +11,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.cop.mobi.common.KeyValuePair;
 import com.cop.mobi.mycar.entity.DriveRoutePo;
 import com.cop.mobi.mycar.entity.MyCar;
-import com.cop.mobi.mycar.entity.OilBill;
 import com.cop.mobi.mycar.service.dao.DiagnoseDao;
 import com.cop.mobi.mycar.service.dao.MyCarDao;
 import com.cop.mobi.mycar.service.dao.OilBillDao;
@@ -78,23 +77,6 @@ public class MyCarDaoTest extends BaseTest {
 			if (status != null) {
 				for (DriveRoutePo s : status) {
 					System.out.println(sdf.format(new Date(s.getAddTime())));
-				}
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
-
-	@Test
-	public void oilBillDaoTest() {
-		try {
-			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-			long beginTime = sdf.parse("2012-01-02 00:00:00").getTime();
-			long endTime = sdf.parse("2013-06-03 00:00:00").getTime();
-			List<OilBill> bills = oilBillDao.getOilBills(1, beginTime, endTime);
-			if (bills != null && bills.size() > 0) {
-				for (OilBill bill : bills) {
-					System.out.println(bill.toString());
 				}
 			}
 		} catch (Exception e) {

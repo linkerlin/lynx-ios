@@ -22,7 +22,7 @@ import com.cop.mobi.rest.core.SpringApplicationContext;
 /**
  * 
  * @author chris.liu
- *
+ * 
  */
 @Path("/account")
 @Produces("application/json;charset=UTF-8")
@@ -40,33 +40,6 @@ public class AccountAction extends AbstractAction {
 		}
 	}
 
-	@POST
-	@Path("/login")
-	public Response login(@FormParam("name") String name,
-			@FormParam("email") String email, @FormParam("pwd") String pwd) {
-		if (accountService == null) {
-			Result result = new Result(ResultStatus.RS_ERROR, new Message(
-					"error", "server inner error"));
-			return Response.status(Status.OK).entity(result.toString()).build();
-		}
-
-		try {
-			User user = new User();
-			user.setEmail(email);
-			user.setName(name);
-			user.setPwd(pwd);
-			Result result = accountService.login(user);
-			return Response.status(Status.OK)
-					.entity(URLEncoder.encode(result.toString(), "UTF-8"))
-					.build();
-		} catch (Exception e) {
-			error(Tag, "login exception", e);
-			Result result = new Result(ResultStatus.RS_ERROR, new Message(
-					"error", "server inner error"));
-			return Response.status(Status.OK).entity(result.toString()).build();
-		}
-	}
-
 	@GET
 	@Path("/register")
 	public Response register(@FormParam("name") String name,
@@ -75,7 +48,7 @@ public class AccountAction extends AbstractAction {
 			@FormParam("price") double price, @FormParam("buyDate") long buyDate) {
 		if (accountService == null) {
 			Result result = new Result(ResultStatus.RS_ERROR, new Message(
-					"register error", "server inner error"));
+					"系统错误", "服务器内部错误"));
 			return Response.status(Status.OK).entity(result.toString()).build();
 		}
 		User user = new User();
@@ -96,9 +69,41 @@ public class AccountAction extends AbstractAction {
 		} catch (Exception e) {
 			error(Tag, "register exception", e);
 			Result result = new Result(ResultStatus.RS_ERROR, new Message(
-					"error", "server inner error"));
+					"系统错误", "服务器内部错误"));
+			return Response.status(Status.OK).entity(result.toString()).build();
+		}
+	}
+
+	@POST
+	@Path("/login")
+	public Response login(@FormParam("name") String name,
+			@FormParam("email") String email, @FormParam("pwd") String pwd) {
+		if (accountService == null) {
+			Result result = new Result(ResultStatus.RS_ERROR, new Message(
+					"系统错误", "服务器内部错误"));
 			return Response.status(Status.OK).entity(result.toString()).build();
 		}
 
+		try {
+			User user = new User();
+			user.setEmail(email);
+			user.setName(name);
+			user.setPwd(pwd);
+			Result result = accountService.login(user);
+			return Response.status(Status.OK)
+					.entity(URLEncoder.encode(result.toString(), "UTF-8"))
+					.build();
+		} catch (Exception e) {
+			error(Tag, "login exception", e);
+			Result result = new Result(ResultStatus.RS_ERROR, new Message(
+					"系统错误", "服务器内部错误"));
+			return Response.status(Status.OK).entity(result.toString()).build();
+		}
+	}
+
+	@POST
+	@Path("/freeze")
+	public Response freeze() {
+		return null;
 	}
 }
