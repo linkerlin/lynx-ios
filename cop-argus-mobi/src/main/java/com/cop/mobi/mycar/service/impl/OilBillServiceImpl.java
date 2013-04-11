@@ -40,7 +40,8 @@ public class OilBillServiceImpl extends AbstractService implements
 	public Result addBill(OilBill bill) {
 		try {
 			oilBillDao.addOilBill(bill);
-			OilBill addBill = oilBillDao.getOilBill(bill.getAddtime());
+			OilBill addBill = oilBillDao.getOilBill(bill.getUid(),
+					bill.getAddtime());
 			if (addBill != null) {
 				return new Result(ResultStatus.RS_OK, addBill);
 			} else {
@@ -50,6 +51,17 @@ public class OilBillServiceImpl extends AbstractService implements
 		} catch (Exception e) {
 			error(Tag, "addBill()", e);
 			return new Result(ResultStatus.RS_FAIL, new Message("错误", "添加账单失败"));
+		}
+	}
+
+	public Result getBill(int uid, long addtime) {
+		try {
+			OilBill bill = oilBillDao.getOilBill(uid, addtime);
+			return new Result(ResultStatus.RS_OK, bill);
+		} catch (Exception e) {
+			error(Tag, "getBill()", e);
+			return new Result(ResultStatus.RS_FAIL,
+					new Message("错误", "服务器内部错误"));
 		}
 	}
 
@@ -73,6 +85,19 @@ public class OilBillServiceImpl extends AbstractService implements
 
 	@Override
 	public Result deleteBill(int bid) {
-		return null;
+		try {
+			OilBill bill = oilBillDao.getOilBillByBid(bid);
+			if (bill != null) {
+				oilBillDao.freezeOilBill(bid);
+				return new Result(ResultStatus.RS_OK, new Message("提示", "删除成功"));
+			} else {
+				return new Result(ResultStatus.RS_FAIL, new Message("删除错误",
+						"未发现相关账单"));
+			}
+		} catch (Exception e) {
+			error(Tag, "deleteBill() error", e);
+			return new Result(ResultStatus.RS_FAIL,
+					new Message("错误", "服务器内部错误"));
+		}
 	}
 }

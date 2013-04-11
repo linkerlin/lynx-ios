@@ -78,7 +78,7 @@ public class MyCarServiceImpl extends AbstractService implements MyCarService {
 	@Override
 	public Result getMyCars(int uid) {
 		try {
-			List<MyCar> myCars = myCarDao.getMyCarByUid(uid);
+			List<MyCar> myCars = myCarDao.getMyCarsByUid(uid);
 			if (myCars != null && myCars.size() > 0) {
 				String str = StringUtils.join(myCars, ",");
 				return new Result(ResultStatus.RS_OK, str);
@@ -114,7 +114,7 @@ public class MyCarServiceImpl extends AbstractService implements MyCarService {
 	@Override
 	public Result getDriveRoutes(int mcid, long beginTime, long endTime) {
 		try {
-			List<DriveRoutePo> drps = myCarDao.getMyCarStatus(mcid, beginTime,
+			List<DriveRoutePo> drps = myCarDao.getDriveRoutes(mcid, beginTime,
 					endTime);
 			if (drps != null && drps.size() > 0) {
 				List<DriveRoute> drs = new ArrayList<DriveRoute>();

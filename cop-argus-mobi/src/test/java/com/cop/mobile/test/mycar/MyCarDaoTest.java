@@ -35,7 +35,7 @@ public class MyCarDaoTest extends BaseTest {
 	@Test
 	public void getMyCarTest() {
 		try {
-			List<MyCar> myCars = myCarDao.getMyCarByUid(2);
+			List<MyCar> myCars = myCarDao.getMyCarsByUid(2);
 			if (myCars != null && myCars.size() > 0) {
 				String str = StringUtils.join(myCars, ",");
 				System.out.println(str);
@@ -72,7 +72,7 @@ public class MyCarDaoTest extends BaseTest {
 			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 			Date beginTime = sdf.parse("2013-03-02 00:00:00");
 			Date endTime = sdf.parse("2013-03-03 00:00:00");
-			List<DriveRoutePo> status = myCarDao.getMyCarStatus(1,
+			List<DriveRoutePo> status = myCarDao.getDriveRoutes(1,
 					beginTime.getTime(), endTime.getTime());
 			if (status != null) {
 				for (DriveRoutePo s : status) {
@@ -91,8 +91,8 @@ public class MyCarDaoTest extends BaseTest {
 					.getAllDiagnoseItems();
 			if (diagnoseItems != null && diagnoseItems.size() > 0) {
 				for (KeyValuePair item : diagnoseItems) {
-					System.out.println(item.getKey() + "\t"
-							+ item.getValue().trim());
+					System.out.print(item.getKey() + "\t"
+							+ item.getValue());
 				}
 			}
 		} catch (Exception e) {

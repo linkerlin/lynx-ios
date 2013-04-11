@@ -9,18 +9,32 @@
 		<result property="cost" column="cost" />
 		<result property="addtime" column="addtime" />
 	</resultMap>
-	
+
 	<insert id="addOilBill">
-		INSERT INTO LC_OilBill (uid, oil, cost, addtime)
+		INSERT INTO LC_OilBill (uid, oil, cost, `addtime`)
 		VALUES(${uid}, ${oil}, ${cost}, ${addtime})
 	</insert>
-	
-	<select id="getOilBill" resultMap="oilBillResult">
+
+	<select id="getOilBillByBid" resultMap="oilBillResult">
 		SELECT
-		id, uid, oil, cost, addtime
+		id, uid, oil, cost,
+		addtime
 		FROM
 		LC_OilBill
-		WHRER addtime=${addtime}
+		WHRER
+		id=${bid}
+	</select>
+
+	<select id="getOilBill" resultMap="oilBillResult">
+		SELECT
+		id, uid, oil, cost,
+		addtime
+		FROM
+		LC_OilBill
+		WHERE
+		uid=${uid} AND 
+		<![CDATA[addtime=${addtime}]]>
+		AND freeze=0
 	</select>
 
 	<select id="getOilBills" resultMap="oilBillResult">
@@ -33,7 +47,8 @@
 		addtime>=${beginTime} AND addtime<=${endTime}
 		]]>
 	</select>
-	
-	
-	
+
+	<update id="freezeOilBill">
+		UPDATE LC_OilBill SET freeze=1 WHERE id=${bid}
+	</update>
 </mapper>

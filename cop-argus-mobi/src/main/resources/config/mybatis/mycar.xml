@@ -16,11 +16,12 @@
 	<resultMap id="routeResult" type="com.cop.mobi.mycar.entity.DriveRoutePo">
 		<result property="id" column="id" />
 		<result property="mcid" column="mcid" />
-		<result property="status" column="status" />
-		<result property="startTime" column="startTime" />
+		<result property="route" column="route" />
+		<result property="beginTime" column="beginTime" />
 		<result property="endTime" column="endTime" />
 		<result property="addTime" column="addTime" />
 	</resultMap>
+	
 	<select id="getMyCarById" resultMap="myCarResult">
 		SELECT
 		id, uid, obd, nameCH,
@@ -39,7 +40,7 @@
 		WHERE obd=#{obd}
 	</select>
 
-	<select id="getMyCars" resultMap="myCarResult">
+	<select id="getMyCarsByUid" resultMap="myCarResult">
 		SELECT
 		id, uid, obd, nameCH,
 		price, buyDate
@@ -47,8 +48,6 @@
 		LC_MyCar
 		WHERE uid=#{uid}
 	</select>
-
-
 
 	<insert id="addMyCar" parameterType="com.cop.mobi.mycar.entity.MyCar">
 		INSERT INTO LC_MyCar (uid,
@@ -62,13 +61,13 @@
 
 	<select id="getDriveRoutes" resultMap="routeResult">
 		SELECT
-		id, mcid, status, startTime, endTime, addTime
+		id, mcid, route, beginTime, endTime, addTime
 		FROM
-		LC_MyCarStatus
+		LC_DriveRoute
 		WHERE mcid=#{mcid}
 		AND
 		<![CDATA[
-		startTime>=#{beginTime} AND endTime<=#{endTime}
+		beginTime>=#{beginTime} AND endTime<=#{endTime}
 		]]>
 	</select>
 

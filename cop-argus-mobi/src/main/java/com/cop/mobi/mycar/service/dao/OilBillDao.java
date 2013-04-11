@@ -15,10 +15,14 @@ public interface OilBillDao {
 
 	Object addOilBill(OilBill bill);
 
-	OilBill getOilBill(@Param(value = "addtime") long addtime);
+	OilBill getOilBillByBid(@Param(value = "bid") int bid);
+
+	OilBill getOilBill(@Param(value = "uid") int uid,
+			@Param(value = "addtime") long addtime);
 
 	List<OilBill> getOilBills(@Param(value = "uid") int uid,
 			@Param(value = "beginTime") long beginTime,
 			@Param(value = "endTime") long endTime);
 
+	Object freezeOilBill(@Param(value = "bid") int bid);
 }

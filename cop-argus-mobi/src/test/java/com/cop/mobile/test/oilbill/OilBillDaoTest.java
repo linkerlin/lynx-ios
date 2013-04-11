@@ -20,12 +20,24 @@ public class OilBillDaoTest extends BaseTest {
 	@Autowired
 	private OilBillDao oilBillDao;
 	
-	
 	@Test
 	public void getOilBillTest() {
 		try {
+			OilBill bill = oilBillDao.getOilBillByBid(2);
+			if (bill != null) {
+				System.out.println(bill);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	
+	@Test
+	public void getOilBillByUidTest() {
+		try {
 			long addtime = 1363276800000l;
-			OilBill bill = oilBillDao.getOilBill(addtime);
+			OilBill bill = oilBillDao.getOilBill(3, addtime);
 			if (bill != null) {
 				System.out.println(bill);
 			}
@@ -47,6 +59,16 @@ public class OilBillDaoTest extends BaseTest {
 					System.out.println(bill.toString());
 				}
 			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	@Test
+	public void freezeOilBillTest() {
+		try {
+			Object result = oilBillDao.freezeOilBill(1);
+			System.out.println(result);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

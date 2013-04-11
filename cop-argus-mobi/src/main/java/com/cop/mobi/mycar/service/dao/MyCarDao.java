@@ -18,7 +18,7 @@ public interface MyCarDao {
 
 	MyCar getMyCarByOBD(@Param(value = "obd") String obd);
 
-	List<MyCar> getMyCarByUid(@Param(value = "uid") int uid);
+	List<MyCar> getMyCarsByUid(@Param(value = "uid") int uid);
 
 	int addMyCar(MyCar myCar);
 
@@ -30,7 +30,7 @@ public interface MyCarDao {
 	 * @param endDate
 	 * @return
 	 */
-	List<DriveRoutePo> getMyCarStatus(@Param(value = "mcid") int mcid,
+	List<DriveRoutePo> getDriveRoutes(@Param(value = "mcid") int mcid,
 			@Param(value = "beginTime") long beginTime,
 			@Param(value = "endTime") long endTime);
 }

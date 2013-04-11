@@ -61,7 +61,29 @@ public class AccountServiceTest extends BaseTest {
 		registerUser.setSex(0);
 		MyCar registerCar = new MyCar();
 		registerCar.setNameCH("大众宝来1.6T");
-		registerCar.setObd("E20A39F4-73F5-4BC4-A12F-17D1AD07A961");
+		registerCar.setObd("E20A39F4-73F5-4BC4-A12F-17D1AD07A962");
+		registerCar.setBuyDate(1362529391000l);
+		Result result = accountService.register(registerUser, registerCar);
+		if (result != null) {
+			try {
+				JSONObject jo = new JSONObject(result.toString());
+				System.out.println(jo.toString());
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+	}
+	
+	@Test
+	public void registerFailTest() {
+		User registerUser = new User();
+		registerUser.setName("test");
+		registerUser.setEmail("test@gmail.com");
+		registerUser.setPwd("111");
+		registerUser.setSex(0);
+		MyCar registerCar = new MyCar();
+		registerCar.setNameCH("大众宝来1.6T");
+		registerCar.setObd("E20A39F4-73F5-4BC4-A12F-17D1AD07A963");
 		registerCar.setBuyDate(1362529391000l);
 		Result result = accountService.register(registerUser, registerCar);
 		if (result != null) {
