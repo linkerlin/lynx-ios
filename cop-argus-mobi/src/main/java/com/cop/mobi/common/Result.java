@@ -1,10 +1,9 @@
 package com.cop.mobi.common;
 
-
 /**
  * 
  * @author chris.liu
- *
+ * 
  */
 public class Result {
 	private ResultStatus status;

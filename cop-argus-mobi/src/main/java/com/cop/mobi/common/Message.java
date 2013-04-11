@@ -8,7 +8,7 @@ package com.cop.mobi.common;
 public class Message {
 	private String title;
 	private String content;
-	
+
 	public Message(String title, String content) {
 		this.title = title;
 		this.content = content;
@@ -32,6 +32,7 @@ public class Message {
 
 	@Override
 	public String toString() {
-		return String.format("{\"title\":\"%s\",\"content\":\"%s\"}", title, content);
+		return String.format("{\"title\":\"%s\",\"content\":\"%s\"}", title,
+				content);
 	}
 }

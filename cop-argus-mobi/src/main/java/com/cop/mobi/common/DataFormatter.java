@@ -18,10 +18,10 @@ public class DataFormatter {
 		baos.flush();
 		encodedBytes = baos.toByteArray();
 		byte[] compressedBytes = compress(encodedBytes);
-//		return EncryptUtil.encrypt(compressedBytes);
+		// return EncryptUtil.encrypt(compressedBytes);
 		return compressedBytes;
 	}
-	
+
 	private static byte[] compress(byte[] source) throws IOException {
 		try {
 			byte[] result = null;
